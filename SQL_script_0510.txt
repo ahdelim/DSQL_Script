@@ -108,5 +108,18 @@ WHERE start_date < end_date
 GROUP BY start_date
 -- ORDER BY DATEDIFF(min(end_date), start_date), start_date
 ORDER BY (DAY(min(end_date)) - day(start_date)), start_date
+
 --------------------------------------------------------------
+8.
+Double join a tables 
+(inner join a as a on a.id = main.id)
+(inner join a as a2 on a.id = c.id)
+
+SELECT s.name FROM students AS s
+INNER JOIN friends AS f on s.id = f.id
+INNER JOIN packages AS p on s.id = p.id
+INNER JOIN packages AS p2 on f.friend_id = p2.id
+WHERE (p2.salary > p.salary)
+ORDER BY p2.salary;
+
 --------------------------------------------------------------
